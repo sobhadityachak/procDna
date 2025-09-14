@@ -3,7 +3,7 @@ const passport = require("passport");
 const User = require("../models/User");
 
 const register = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, fullName } = req.body;
 
   try {
     const existingUser = await User.findOne({ username });
@@ -17,6 +17,7 @@ const register = async (req, res) => {
     const newUser = new User({
       username,
       password: hashedPassword,
+      fullName,
     });
 
     await newUser.save();
@@ -50,6 +51,7 @@ const login = (req, res, next) => {
         user: {
           id: user._id,
           username: user.username,
+          fullName: user.fullName,
           email: user.email,
           createdAt: user.createdAt,
           lastLogin: new Date(),
@@ -80,6 +82,7 @@ const getCurrentUser = async (req, res) => {
         user: {
           id: req.user._id,
           username: req.user.username,
+          fullName: req.user.fullName,
           email: req.user.email,
           createdAt: req.user.createdAt,
           lastLogin: req.user.lastLogin,
@@ -91,6 +94,7 @@ const getCurrentUser = async (req, res) => {
         user: {
           id: req.user._id,
           username: req.user.username,
+          fullName: req.user.fullName,
           email: req.user.email,
           createdAt: req.user.createdAt,
           lastLogin: req.user.lastLogin,
