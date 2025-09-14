@@ -121,12 +121,12 @@ const allStats = async (req, res) => {
   try {
     const userId = req.user._id;
     
-    const totalTrials = await ClinicalTrial.countDocuments({ createdBy: userId });
-    const plannedTrials = await ClinicalTrial.countDocuments({ createdBy: userId, status: 'Planned' });
-    const ongoingTrials = await ClinicalTrial.countDocuments({ createdBy: userId, status: 'Ongoing' });
-    const completedTrials = await ClinicalTrial.countDocuments({ createdBy: userId, status: 'Completed' });
+    const totalTrials = await ClinicalTrial.countDocuments({});
+    const plannedTrials = await ClinicalTrial.countDocuments({ status: 'Planned' });
+    const ongoingTrials = await ClinicalTrial.countDocuments({ status: 'Ongoing' });
+    const completedTrials = await ClinicalTrial.countDocuments({ status: 'Completed' });
     
-    const recentTrials = await ClinicalTrial.find({ createdBy: userId })
+    const recentTrials = await ClinicalTrial.find({})
       .sort({ createdAt: -1 })
       .limit(5)
       .select('trialName status createdAt')
