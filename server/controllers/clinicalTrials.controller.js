@@ -4,7 +4,7 @@ const getAllClinicalTrials = async (req, res) => {
   try {
     const trials = await ClinicalTrial.find({
       createdBy: req.user._id,
-    }).populate("createdBy", "username");
+    }).populate("createdBy", "username fullName");
     res.json(trials);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
@@ -16,7 +16,7 @@ const getClinicalTrialById = async (req, res) => {
     const trial = await ClinicalTrial.findOne({
       _id: req.params.id,
       createdBy: req.user._id,
-    }).populate("createdBy", "username");
+    }).populate("createdBy", "username fullName");
 
     if (!trial) {
       return res
