@@ -1,0 +1,203 @@
+/* Error Boundary Fallback Styles */
+
+.error-fallback {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20000;
+  backdrop-filter: blur(8px);
+}
+
+.error-fallback-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: errorFallbackSlideIn 0.4s ease-out;
+}
+
+.error-fallback-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 2rem 1rem 2rem;
+  border-bottom: 1px solid #fee2e2;
+  background: linear-gradient(to right, #fef2f2, #ffffff);
+}
+
+.error-fallback-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+.error-fallback-header h2 {
+  margin: 0;
+  color: #dc2626;
+  font-size: 1.5rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.error-fallback-body {
+  padding: 2rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.error-fallback-body p {
+  margin: 0 0 1.5rem 0;
+  font-size: 1rem;
+}
+
+.error-details {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.error-details summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.error-details summary:hover {
+  color: #374151;
+}
+
+.error-stack {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.error-stack pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 0.5rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.error-fallback-actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2rem 2rem 2rem;
+  justify-content: flex-end;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.error-fallback-actions button {
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.error-fallback-btn-secondary {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.error-fallback-btn-secondary:hover {
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.error-fallback-btn-primary {
+  background-color: #dc2626;
+  color: white;
+}
+
+.error-fallback-btn-primary:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+@keyframes errorFallbackSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error-fallback-modal {
+    max-width: 95%;
+    margin: 1rem;
+  }
+  
+  .error-fallback-header,
+  .error-fallback-body,
+  .error-fallback-actions {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .error-fallback-actions {
+    flex-direction: column;
+  }
+  
+  .error-fallback-actions button {
+    width: 100%;
+  }
+  
+  .error-stack pre {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-fallback-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .error-fallback-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .error-fallback-icon {
+    font-size: 2rem;
+  }
+}

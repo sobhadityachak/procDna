@@ -1,0 +1,103 @@
+.trials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.trial-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.trial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.trial-header h3 {
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status.planned {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status.ongoing {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.status.completed {
+  background-color: #e8f5e8;
+  color: #388e3c;
+}
+
+.trial-body {
+  margin-bottom: 1.5rem;
+}
+
+.trial-body p {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.trial-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.trial-actions button {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.no-trials {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+@media (max-width: 1200px) {
+  .trials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .trials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .trial-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .trials-grid {
+    grid-template-columns: 1fr;
+  }
+}
